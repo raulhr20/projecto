@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frameLayout3"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".administrador.menuadministrador" >
+
+    <Button
+        android:id="@+id/irtest"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="administrar test"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/irmodulos" />
+
+    <Button
+        android:id="@+id/irmodulos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="administrar modulos"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/irusuarios" />
+
+    <Button
+        android:id="@+id/irusuarios"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="administrar usuarios"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
