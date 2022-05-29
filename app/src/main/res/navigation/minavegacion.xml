@@ -73,6 +73,9 @@
         <argument
             android:name="usuario"
             app:argType="com.example.appformaciones.basededatos.Usuario" />
+        <action
+            android:id="@+id/action_selectormodulos_to_test"
+            app:destination="@id/test" />
     </fragment>
     <fragment
         android:id="@+id/editar_modulo"
@@ -109,4 +112,12 @@
         android:name="com.example.appformaciones.administrador.gestortest"
         android:label="fragment_administradorpreguntas"
         tools:layout="@layout/fragment_administradorpreguntas" />
+    <fragment
+        android:id="@+id/test"
+        android:name="com.example.appformaciones.usuarios.test"
+        android:label="fragment_test"
+        tools:layout="@layout/fragment_test" >
+        <argument android:name="modelo"
+            app:argType="com.example.appformaciones.basededatos.Modulo" />
+    </fragment>
 </navigation>

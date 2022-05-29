@@ -49,9 +49,7 @@ class adaptadorpreguntas(val vm:PreguntasViewModel):RecyclerView.Adapter<adaptad
         }
 
     }
-    fun filtra(id:Int){
-        vm.filtrarlista(id)
-    }
+
     fun refresca(){
         notifyDataSetChanged()
     }

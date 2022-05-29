@@ -22,6 +22,9 @@ interface PreguntaDAO {
     @Query("SELECT * FROM Pregunta WHERE `id modulo`=:modulo")
     fun listafiltro(modulo: Int): LiveData<List<Pregunta>>
 
+    @Query("SELECT * FROM Pregunta WHERE `id modulo`=:modulo")
+    fun crearlistapreguntas(modulo: Int): List<Pregunta>
+
 
     @Query("SELECT EXISTS(SELECT * FROM Pregunta WHERE pregunta = :pregunta)")
     suspend fun existelapregunta(pregunta : String) : Boolean
