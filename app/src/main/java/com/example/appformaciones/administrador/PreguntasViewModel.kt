@@ -14,9 +14,7 @@ val dao= AppDB.getInstancia(aplicacion).preguntaDAO
     val lista:LiveData<List<Pregunta>>
     get()=_lista
 
-    private lateinit var _preguntas:List<Pregunta>
-    val preguntas:List<Pregunta>
-        get()=_preguntas
+
 
     fun eliminapregunta(pos:Int){
         viewModelScope.launch {
@@ -30,9 +28,6 @@ val dao= AppDB.getInstancia(aplicacion).preguntaDAO
         _lista=dao.listafiltro(modulo)
 
     }
-    fun crearlistapreguntas(modulo: Int){
-        _preguntas=dao.crearlistapreguntas(modulo)
 
-    }
 
 }

@@ -14,6 +14,9 @@ interface RespuestaDAO {
     @Update
     suspend fun modifica(respuesta: Respuesta)
 
-    @Query("SELECT * FROM Pregunta ORDER BY id ASC")
-    fun list(): LiveData<List<Pregunta>>
+    @Query("SELECT * FROM Respuesta ORDER BY id ASC")
+    fun list(): LiveData<List<Respuesta>>
+
+    @Query("SELECT * FROM Respuesta Where `id pregunta`=:id")
+    fun getRespuestas(id:Int): LiveData<List<Respuesta>>
 }

@@ -9,16 +9,23 @@ import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.appformaciones.R
 import com.example.appformaciones.administrador.PreguntasViewModel
+import com.example.appformaciones.administrador.RespuestasViewModel
 import com.example.appformaciones.administrador.modulosViewModel
-import com.example.appformaciones.basededatos.Modulo
-import com.example.appformaciones.basededatos.Pregunta
-import com.example.appformaciones.basededatos.Usuario
+import com.example.appformaciones.basededatos.*
+import com.example.appformaciones.databinding.FragmentAdministradorDeUsuariosBinding
+import com.example.appformaciones.databinding.FragmentTestBinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import java.util.*
 
 class test : Fragment() {
+    lateinit var enlace: FragmentTestBinding
+    val vmr: RespuestasViewModel by lazy{
+        ViewModelProvider(this,).get(RespuestasViewModel::class.java)
+    }
     val vm: PreguntasViewModel by lazy{
         ViewModelProvider(this,).get(PreguntasViewModel::class.java)
     }
@@ -41,16 +48,29 @@ class test : Fragment() {
     ): View? {
 
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_test, container, false)
+        enlace= FragmentTestBinding.inflate(inflater,container,false)
+        return enlace.root
     }
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
         super.onViewCreated(view, savedInstanceState)
+        val adaptador= adaptadorRespuestas(vmr)
+        enlace.respuestas.adapter=adaptador
+        enlace.respuestas.layoutManager=LinearLayoutManager(context)
         vm.filtrarlista(modulo.id!!)
+
         vm.lista.observe(viewLifecycleOwner){
-            preguntas=it
-            Toast.makeText(context, preguntas[0].toString(), Toast.LENGTH_SHORT).show()
+            var pregunta  =it.get(0)
+            enlace.preguntas.text=pregunta.pregunta
+            pregunta.id?.let { it1 -> vmr.obtenerrespuestas(it1) }
+            vmr.lista.observe(viewLifecycleOwner){
+                val semilla=System.currentTimeMillis()
+            adaptador.lista=it.shuffled(Random(semilla))
+
+                
+            }
         }
 
     }
