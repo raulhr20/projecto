@@ -36,8 +36,7 @@ class adaptadorpreguntas(val vm:PreguntasViewModel):RecyclerView.Adapter<adaptad
         lateinit var pre: Pregunta
         init {
             itemView.setOnClickListener {
-                Toast.makeText(itemView.context, pre.idmodulo.toString(), Toast.LENGTH_SHORT).show()
-               // itemView.findNavController().navigate(selectormodulosDirections.actionSelectormodulosToVideoplayer(url.text.toString()))
+                // itemView.findNavController().navigate(selectormodulosDirections.actionSelectormodulosToVideoplayer(url.text.toString()))
 
             }
         }

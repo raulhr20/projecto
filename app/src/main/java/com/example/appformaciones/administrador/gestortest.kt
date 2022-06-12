@@ -61,9 +61,9 @@ class gestortest : Fragment() {
             lifecycleScope.launch {
                 var idpregunta=daopreguntas.inserta(Pregunta(null,enlace.pregunta.text.toString(),(enlace.modulos.selectedItem as Modulo).id))
                 Toast.makeText(context, idpregunta.toString(), Toast.LENGTH_SHORT).show()
-                daorespuestas.inserta(Respuesta(null,enlace.respuestacorrecta.text.toString(),"YES",idpregunta))
-                daorespuestas.inserta(Respuesta(null,enlace.respuesta2.text.toString(),"NO",idpregunta))
-                daorespuestas.inserta(Respuesta(null,enlace.respuesta3.text.toString(),"NO",idpregunta))
+                daorespuestas.inserta(Respuesta(null,enlace.respuestacorrecta.text.toString(),true,idpregunta))
+                daorespuestas.inserta(Respuesta(null,enlace.respuesta2.text.toString(),false,idpregunta))
+                daorespuestas.inserta(Respuesta(null,enlace.respuesta3.text.toString(),false,idpregunta))
 
 
             }
@@ -115,7 +115,6 @@ class gestortest : Fragment() {
             if (adaptadorsninermodulos != null) {
                 adaptadorsninermodulos.addAll(adaptadormodulo.lista)
             }
-            Toast.makeText(context, adaptadormodulo.lista.toString(), Toast.LENGTH_SHORT).show()
             enlace.modulos.adapter=adaptadorsninermodulos
             enlace.filtro.adapter=adaptadorsninermodulos
         }

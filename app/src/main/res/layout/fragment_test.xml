@@ -10,20 +10,20 @@
         android:id="@+id/respuestas"
         android:layout_width="267dp"
         android:layout_height="405dp"
+        android:layout_margin="10dp"
+        android:layout_marginStart="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/preguntas"
         tools:listitem="@layout/respuestas" />
 
     <TextView
         android:id="@+id/preguntas"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="212dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="40dp"
         android:text="TextView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -8,6 +8,8 @@ import com.example.appformaciones.basededatos.Respuesta
 
 class RespuestasViewModel(aplicacion: Application): AndroidViewModel(aplicacion) {
     val dao= AppDB.getInstancia(aplicacion).respuestaDAO
+    var puntos=0
+    var posicion=0
     private var _lista=dao.list()
     val lista:LiveData<List<Respuesta>>
     get()=_lista

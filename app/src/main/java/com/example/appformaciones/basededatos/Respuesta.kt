@@ -13,7 +13,7 @@ import kotlinx.parcelize.Parcelize
 class Respuesta(@PrimaryKey(autoGenerate = true)
                 val id:Int?=null,
                 @ColumnInfo(name="respuesta") var respuesta:String,
-                @ColumnInfo(name = "correcta") val correcta:String,
+                @ColumnInfo(name = "correcta") val correcta:Boolean,
                 @ColumnInfo(name="id pregunta") var idpregunta: Long
 ) : Parcelable {
 

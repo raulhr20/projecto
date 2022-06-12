@@ -15,7 +15,6 @@ val dao= AppDB.getInstancia(aplicacion).preguntaDAO
     get()=_lista
 
 
-
     fun eliminapregunta(pos:Int){
         viewModelScope.launch {
             lista.value?.let{
@@ -27,6 +26,9 @@ val dao= AppDB.getInstancia(aplicacion).preguntaDAO
     fun filtrarlista(modulo:Int){
         _lista=dao.listafiltro(modulo)
 
+    }
+    fun refresca(){
+        _lista=dao.recuperaTodo()
     }
 
 

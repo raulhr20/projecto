@@ -23,12 +23,10 @@ import java.util.*
 
 class test : Fragment() {
     lateinit var enlace: FragmentTestBinding
-    val vmr: RespuestasViewModel by lazy{
-        ViewModelProvider(this,).get(RespuestasViewModel::class.java)
+    val vm: TestViewModel by lazy{
+        ViewModelProvider(this,).get(TestViewModel::class.java)
     }
-    val vm: PreguntasViewModel by lazy{
-        ViewModelProvider(this,).get(PreguntasViewModel::class.java)
-    }
+
     private lateinit var datos: testArgs
     private lateinit var preguntas:List<Pregunta>
     private lateinit var modulo: Modulo
@@ -56,22 +54,30 @@ class test : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
         super.onViewCreated(view, savedInstanceState)
-        val adaptador= adaptadorRespuestas(vmr)
+
+        val adaptador= adaptadorRespuestas(vm)
         enlace.respuestas.adapter=adaptador
         enlace.respuestas.layoutManager=LinearLayoutManager(context)
-        vm.filtrarlista(modulo.id!!)
 
-        vm.lista.observe(viewLifecycleOwner){
-            var pregunta  =it.get(0)
-            enlace.preguntas.text=pregunta.pregunta
-            pregunta.id?.let { it1 -> vmr.obtenerrespuestas(it1) }
-            vmr.lista.observe(viewLifecycleOwner){
-                val semilla=System.currentTimeMillis()
-            adaptador.lista=it.shuffled(Random(semilla))
-
-                
+        vm.posicion.observe(viewLifecycleOwner){
+            vm.listaPre.observe(viewLifecycleOwner){
+                vm.filtrarlista(modulo.id!!)
+                var pregunta  = vm.posicion.value?.let { it1 -> it.get(it1) }
+                if (pregunta != null) {
+                    enlace.preguntas.text=pregunta.pregunta
+                }
+                if (pregunta != null) {
+                    pregunta.id?.let { it1 -> vm.obtenerrespuestas(it1) }
+                }
+                vm.listaRes.observe(viewLifecycleOwner){
+                    val semilla=System.currentTimeMillis()
+                    adaptador.lista=it.shuffled(Random(semilla))
+                }
             }
         }
+
+
+
 
     }
 
