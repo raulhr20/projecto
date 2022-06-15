@@ -47,32 +47,31 @@ class selectormodulos : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        val adaptador= adaptadormodulosusuario(vm)
         usu=datos.usuario
+        super.onViewCreated(view, savedInstanceState)
+        var adaptador= adaptadormodulosusuario(vm,usu)
         var ubicacion = datos.id
         vm.cargalistapornivel(usu.nivel!!)
         enlace.listamodulos.adapter=adaptador
         enlace.listamodulos.layoutManager=LinearLayoutManager(context)
         enlace.minivel.text=usu.nivel.toString()
-        enlace.button3.setOnClickListener {
-            vmu.actualizanivel(usu)
-            enlace.minivel.text=usu.nivel.toString()
-            vm.cargalistapornivel(usu.nivel!!)
-            vm.lista.observe(viewLifecycleOwner){
-                adaptador.refresca()
-                adaptador.lista=it
-            }
-        }
 
-        vm.lista.observe(viewLifecycleOwner){
-            adaptador.lista=it
-        }
+
         vmu.lista.observe(viewLifecycleOwner){
             usu=it[ubicacion]
+            adaptador= adaptadormodulosusuario(vm,usu)
+            vm.cargalistapornivel(usu.nivel!!)
+            vm.lista.observe(viewLifecycleOwner){
+                adaptador.lista=it
+                enlace.listamodulos.adapter=adaptador
+                enlace.listamodulos.layoutManager=LinearLayoutManager(context)
+            }
+            enlace.minivel.text=usu.nivel.toString()
 
 
         }
 
     }
+
+
 }

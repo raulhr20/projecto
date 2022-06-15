@@ -68,7 +68,7 @@ class iniciosesion : Fragment() {
                         for (Usu: Usuario in listausuarios){
                            if (Usu.nombre==enlace.editTextTextPersonName.text.toString() &&
                                Usu.contraseña==enlace.editTextTextPassword.text.toString()){
-                                findNavController().navigate(iniciosesionDirections.actionIniciosesionToSelectormodulos(listausuarios.indexOf(Usu),Usu))
+                                findNavController().navigate(iniciosesionDirections.actionIniciosesionToSelectormodulos(Usu,listausuarios.indexOf(Usu)))
                                 break
                            }else{
                                Toast.makeText(context, "informacion erronea", Toast.LENGTH_SHORT).show()

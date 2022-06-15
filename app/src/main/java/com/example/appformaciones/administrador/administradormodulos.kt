@@ -1,10 +1,11 @@
 package com.example.appformaciones.administrador
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.ItemTouchHelper
@@ -13,9 +14,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.appformaciones.basededatos.AppDB
 import com.example.appformaciones.basededatos.Modulo
 import com.example.appformaciones.basededatos.adaptadormoduloadministracion
-import com.example.appformaciones.basededatos.adaptadormodulosusuario
 import com.example.appformaciones.databinding.FragmentAdministradormodulosBinding
 import kotlinx.coroutines.launch
+import java.util.regex.Pattern
 
 class administradormodulos : Fragment() {
     lateinit var enlace: FragmentAdministradormodulosBinding
@@ -43,9 +44,15 @@ class administradormodulos : Fragment() {
         enlace.listamodulos.layoutManager=LinearLayoutManager(context)
         val mimodulo= AppDB.getInstancia(requireContext()).moduloDAO
         enlace.aAdir.setOnClickListener{
-            lifecycleScope.launch {
-                mimodulo.inserta(Modulo(null,enlace.modulo.text.toString(),enlace.nivel.text.toString().toInt(),enlace.url.text.toString()))
+            var urlvalida = Pattern.compile("^(http(s)?:\\/\\/)?((w){3}.)?youtu(be|.be)?(\\.com)?\\/.+").matcher(enlace.url.text.toString()).matches()
+            if (urlvalida){
+                lifecycleScope.launch {
+                    mimodulo.inserta(Modulo(null,enlace.modulo.text.toString(),enlace.nivel.text.toString().toInt(),enlace.url.text.toString()))
+                }
+            }else{
+                Toast.makeText(context, "url invalida", Toast.LENGTH_SHORT).show()
             }
+
         }
         val manejadorGestos= ItemTouchHelper(
             object: ItemTouchHelper.SimpleCallback(

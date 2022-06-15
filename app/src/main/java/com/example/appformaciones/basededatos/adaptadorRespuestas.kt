@@ -38,7 +38,7 @@ class adaptadorRespuestas(val vm:TestViewModel):RecyclerView.Adapter<adaptadorRe
         init {
             itemView.setOnClickListener {
             vm.respuesta(res.correcta)
-                Toast.makeText(itemView.context, vm.posicion.value.toString(), Toast.LENGTH_SHORT).show()
+
             }
         }
 

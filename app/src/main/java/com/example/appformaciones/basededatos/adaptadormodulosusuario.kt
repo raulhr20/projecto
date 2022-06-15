@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.navigation.findNavController
 
 import androidx.recyclerview.widget.RecyclerView
@@ -12,7 +13,8 @@ import com.example.appformaciones.administrador.modulosViewModel
 import com.example.appformaciones.usuarios.selectormodulosDirections
 
 
-class adaptadormodulosusuario(val vm: modulosViewModel):RecyclerView.Adapter<adaptadormodulosusuario.Holder>(){
+class adaptadormodulosusuario(val vm: modulosViewModel,val usuario: Usuario):RecyclerView.Adapter<adaptadormodulosusuario.Holder>(){
+
     var lista= listOf<Modulo>()
         set(value){
             field=value
@@ -26,6 +28,7 @@ class adaptadormodulosusuario(val vm: modulosViewModel):RecyclerView.Adapter<ada
     override fun onBindViewHolder(holder: Holder, position: Int) {
         val modulo= lista[position]
         holder.rellena(modulo)
+
 
     }
 
@@ -41,12 +44,20 @@ class adaptadormodulosusuario(val vm: modulosViewModel):RecyclerView.Adapter<ada
         var boton = itemView.findViewById<TextView>(R.id.botontest)
         init {
 
+
             boton.setOnClickListener {
-                itemView.findNavController().navigate(selectormodulosDirections.actionSelectormodulosToTest(mod))
+
+
+                itemView.findNavController().navigate(selectormodulosDirections.actionSelectormodulosToTest(mod,usuario))
+
             }
             itemView.setOnClickListener {
+                if(url.text.isNullOrEmpty()){
+                    Toast.makeText(itemView.context, "este modulo aun no tiene una lista asociada", Toast.LENGTH_SHORT).show()
 
-           itemView.findNavController().navigate(selectormodulosDirections.actionSelectormodulosToVideoplayer(url.text.toString()))
+                }else{
+                    itemView.findNavController().navigate(selectormodulosDirections.actionSelectormodulosToVideoplayer(url.text.toString()))
+                }
 
         }
     }
@@ -57,6 +68,7 @@ class adaptadormodulosusuario(val vm: modulosViewModel):RecyclerView.Adapter<ada
             nivel.text= modulo.nivel.toString()
             url.text=modulo.url.toString()
             mod=modulo
+
         }
     }
     fun refresca(){

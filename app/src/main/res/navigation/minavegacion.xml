@@ -68,14 +68,15 @@
         <action
             android:id="@+id/action_selectormodulos_to_videoplayer"
             app:destination="@id/videoplayer" />
-        <argument android:name="id"
-            app:argType="integer" />
         <argument
             android:name="usuario"
             app:argType="com.example.appformaciones.basededatos.Usuario" />
         <action
             android:id="@+id/action_selectormodulos_to_test"
             app:destination="@id/test" />
+        <argument
+            android:name="id"
+            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/editar_modulo"
@@ -119,5 +120,11 @@
         tools:layout="@layout/fragment_test" >
         <argument android:name="modelo"
             app:argType="com.example.appformaciones.basededatos.Modulo" />
+        <argument
+            android:name="usuario"
+            app:argType="com.example.appformaciones.basededatos.Usuario" />
+        <action
+            android:id="@+id/action_test_to_selectormodulos2"
+            app:destination="@id/selectormodulos" />
     </fragment>
 </navigation>

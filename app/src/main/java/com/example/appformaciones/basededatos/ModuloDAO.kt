@@ -21,7 +21,7 @@ interface ModuloDAO {
     @Query("SELECT * FROM Modulo ORDER BY id ASC")
     fun listaviewmodel(): LiveData<List<Modulo>>
 
-    @Query("SELECT * FROM Modulo Where nivel<=:nivel ORDER BY id ASC")
+    @Query("SELECT * FROM Modulo Where nivel<=:nivel ORDER BY nivel ASC")
     fun listapornivel(nivel: Int): LiveData<List<Modulo>>
 
 

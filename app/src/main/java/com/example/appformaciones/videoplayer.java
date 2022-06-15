@@ -12,6 +12,8 @@ import com.google.android.youtube.player.YouTubePlayer.PlayerStateChangeListener
 import com.google.android.youtube.player.YouTubePlayer.Provider;
 import com.google.android.youtube.player.YouTubePlayerView;
 
+import java.util.regex.Pattern;
+
 public class videoplayer extends YouTubeBaseActivity implements YouTubePlayer.OnInitializedListener {
 
 
@@ -91,9 +93,7 @@ public class videoplayer extends YouTubeBaseActivity implements YouTubePlayer.On
     };
 
     public static String conseguiridlista(String ytUrl) {
-
         String vId = ytUrl.substring(34);
-
         return vId;
     }
 
