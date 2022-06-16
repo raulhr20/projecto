@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frameLayout6"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".administrador.editar_modulo">
+
+    <EditText
+        android:id="@+id/nombremoduloeditar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="nombre"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/urlmoduloeditor"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:ems="10"
+        android:hint="url"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/nombremoduloeditar"
+        app:layout_constraintTop_toBottomOf="@+id/nombremoduloeditar" />
+
+    <EditText
+        android:id="@+id/nivelmoduloeditar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="nivel"
+        android:inputType="number"
+        app:layout_constraintStart_toStartOf="@+id/urlmoduloeditor"
+        app:layout_constraintTop_toBottomOf="@+id/botonprovar" />
+
+    <Button
+        android:id="@+id/botonprovar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="provar url"
+        app:layout_constraintEnd_toEndOf="@+id/urlmoduloeditor"
+        app:layout_constraintStart_toStartOf="@+id/urlmoduloeditor"
+        app:layout_constraintTop_toBottomOf="@+id/urlmoduloeditor" />
+
+    <Button
+        android:id="@+id/botonactualizar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="96dp"
+        android:text="confirmar cambios"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/urlmoduloeditor"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="@+id/nivelmoduloeditar"
+        app:layout_constraintTop_toBottomOf="@+id/nivelmoduloeditar" />
+</androidx.constraintlayout.widget.ConstraintLayout>

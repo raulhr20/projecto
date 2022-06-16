@@ -3,6 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/raulh/appformaciones/app/src/main/res/layout-land/fragment_administrador_de_usuarios.xml" value="0.20520833333333333" />
+        <entry key="..\:/Users/raulh/appformaciones/app/src/main/res/layout-land/fragment_administradormodulos.xml" value="0.20520833333333333" />
+        <entry key="..\:/Users/raulh/appformaciones/app/src/main/res/layout-land/fragment_administradorpreguntas.xml" value="0.18" />
+        <entry key="..\:/Users/raulh/appformaciones/app/src/main/res/layout-land/fragment_editar_modulo.xml" value="0.20520833333333333" />
+        <entry key="..\:/Users/raulh/appformaciones/app/src/main/res/layout-land/fragment_test.xml" value="0.20520833333333333" />
         <entry key="..\:/Users/raulh/appformaciones/app/src/main/res/layout/activity_main.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/raulh/appformaciones/app/src/main/res/layout/activity_mainlista.xml" value="0.1" />
         <entry key="..\:/Users/raulh/appformaciones/app/src/main/res/layout/fragment_administrador_de_usuarios.xml" value="0.25" />

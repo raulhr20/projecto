@@ -45,11 +45,13 @@ public class videoplayer extends YouTubeBaseActivity implements YouTubePlayer.On
         player.setPlayerStateChangeListener(playerStateChangeListener);
         player.setPlaybackEventListener(playbackEventListener);
         /** Start buffering **/
+        player.setShowFullscreenButton(false);
+        player.setFullscreen(true);
         if (!wasRestored) {
 
             player.cuePlaylist(PlayList_ID);
         }
-        player.pause();
+
     }
 
 

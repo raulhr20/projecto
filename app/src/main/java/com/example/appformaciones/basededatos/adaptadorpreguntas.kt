@@ -37,7 +37,6 @@ class adaptadorpreguntas(val vm:PreguntasViewModel):RecyclerView.Adapter<adaptad
         init {
             itemView.setOnClickListener {
                 // itemView.findNavController().navigate(selectormodulosDirections.actionSelectormodulosToVideoplayer(url.text.toString()))
-
             }
         }
         fun rellena(pregunta: Pregunta){

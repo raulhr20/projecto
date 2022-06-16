@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
@@ -49,7 +50,7 @@ class gestortest : Fragment() {
         val adaptador=adaptadorpreguntas(vm)
 
         val adaptadormodulo=adaptadormoduloadministracion(vmm)
-        val adaptadorsninermodulos= context?.let { ArrayAdapter<Modulo>(it,android.R.layout.simple_spinner_dropdown_item) }
+        val adaptadorsninermodulos= context?.let { ArrayAdapter<Modulo>(it,android.R.layout.simple_spinner_item) }
 
 
 
@@ -72,11 +73,11 @@ class gestortest : Fragment() {
         enlace.filtro.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(
                 parent: AdapterView<*>,
-                view: View,
+                view: View?,
                 position: Int,
                 id: Long
             ) {
-                vm.filtrarlista((enlace.filtro.selectedItem as Modulo).id!!)
+                (enlace.filtro.selectedItem as Modulo).id?.let { vm.filtrarlista(it) }
                 vm.lista.observe(viewLifecycleOwner){
                     adaptador.refresca()
                     adaptador.lista=it
