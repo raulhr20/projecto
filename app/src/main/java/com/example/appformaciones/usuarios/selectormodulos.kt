@@ -24,6 +24,9 @@ class selectormodulos : Fragment() {
     val vm: modulosViewModel by lazy{
         ViewModelProvider(this,).get(modulosViewModel::class.java)
     }
+    val vmt: TestViewModel by lazy{
+        ViewModelProvider(this,).get(TestViewModel::class.java)
+    }
     val vmu: usuariosViewModel by lazy{
         ViewModelProvider(this,).get(usuariosViewModel::class.java)
     }
@@ -49,7 +52,7 @@ class selectormodulos : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         usu=datos.usuario
         super.onViewCreated(view, savedInstanceState)
-        var adaptador= adaptadormodulosusuario(vm,usu)
+        var adaptador= adaptadormodulosusuario(vmt,usu)
         var ubicacion = datos.id
         vm.cargalistapornivel(usu.nivel!!)
         enlace.listamodulos.adapter=adaptador
@@ -59,7 +62,7 @@ class selectormodulos : Fragment() {
 
         vmu.lista.observe(viewLifecycleOwner){
             usu=it[ubicacion]
-            adaptador= adaptadormodulosusuario(vm,usu)
+            adaptador= adaptadormodulosusuario(vmt,usu)
             vm.cargalistapornivel(usu.nivel!!)
             vm.lista.observe(viewLifecycleOwner){
                 adaptador.lista=it

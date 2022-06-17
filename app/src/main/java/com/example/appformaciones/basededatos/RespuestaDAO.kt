@@ -19,4 +19,6 @@ interface RespuestaDAO {
 
     @Query("SELECT * FROM Respuesta Where `id pregunta`=:id")
     fun getRespuestas(id:Int): LiveData<List<Respuesta>>
+
+
 }

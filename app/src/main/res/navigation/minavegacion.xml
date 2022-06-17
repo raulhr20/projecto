@@ -112,7 +112,11 @@
         android:id="@+id/gestortest"
         android:name="com.example.appformaciones.administrador.gestortest"
         android:label="fragment_administradorpreguntas"
-        tools:layout="@layout/fragment_administradorpreguntas" />
+        tools:layout="@layout/fragment_administradorpreguntas" >
+        <action
+            android:id="@+id/action_gestortest_to_editortest"
+            app:destination="@id/editortest" />
+    </fragment>
     <fragment
         android:id="@+id/test"
         android:name="com.example.appformaciones.usuarios.test"
@@ -126,5 +130,14 @@
         <action
             android:id="@+id/action_test_to_selectormodulos2"
             app:destination="@id/selectormodulos" />
+    </fragment>
+    <fragment
+        android:id="@+id/editortest"
+        android:name="com.example.appformaciones.administrador.editortest"
+        android:label="fragment_editortest"
+        tools:layout="@layout/fragment_editortest" >
+        <argument
+            android:name="pregunta"
+            app:argType="com.example.appformaciones.basededatos.Pregunta" />
     </fragment>
 </navigation>

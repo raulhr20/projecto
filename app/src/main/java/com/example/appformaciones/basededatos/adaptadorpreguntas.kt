@@ -9,7 +9,9 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.appformaciones.R
 import com.example.appformaciones.administrador.PreguntasViewModel
+import com.example.appformaciones.administrador.gestortestDirections
 import com.example.appformaciones.usuarios.selectormodulosDirections
+import com.example.appformaciones.usuarios.testDirections
 import kotlin.coroutines.coroutineContext
 
 class adaptadorpreguntas(val vm:PreguntasViewModel):RecyclerView.Adapter<adaptadorpreguntas.Holder>() {
@@ -36,7 +38,7 @@ class adaptadorpreguntas(val vm:PreguntasViewModel):RecyclerView.Adapter<adaptad
         lateinit var pre: Pregunta
         init {
             itemView.setOnClickListener {
-                // itemView.findNavController().navigate(selectormodulosDirections.actionSelectormodulosToVideoplayer(url.text.toString()))
+                 itemView.findNavController().navigate(gestortestDirections.actionGestortestToEditortest(pre))
             }
         }
         fun rellena(pregunta: Pregunta){

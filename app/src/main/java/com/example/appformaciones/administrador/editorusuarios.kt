@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.appformaciones.R
@@ -22,8 +23,8 @@ class editorusuarios : Fragment() {
     private lateinit var datos: editorusuariosArgs
     lateinit var enlace: FragmentEditorusuariosBinding
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    val vm: usuariosViewModel by lazy{
+        ViewModelProvider(this).get(usuariosViewModel::class.java)
     }
 
     override fun onCreateView(
