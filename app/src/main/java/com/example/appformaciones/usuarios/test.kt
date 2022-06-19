@@ -81,8 +81,7 @@ class test : Fragment() {
                     if (pregunta != null) {
                         pregunta.id?.let { it1 -> vm.obtenerrespuestas(it1) }
                     }
-                }catch (e:IndexOutOfBoundsException){
-                  var respuestas =vm.puntos
+                    var respuestas =vm.puntos
                     var preguntas = it.size
                     var division:Float = respuestas.toFloat() / preguntas.toFloat()
                     var nota=division * 10
@@ -99,6 +98,10 @@ class test : Fragment() {
                         findNavController().popBackStack()
                         Toast.makeText(context, "AS SUSPENDIDO", Toast.LENGTH_SHORT).show()
                     }
+                }catch (e:IndexOutOfBoundsException){
+                    findNavController().popBackStack()
+                    Toast.makeText(context, "NO HAY TEST", Toast.LENGTH_SHORT).show()
+
                 }
 
 

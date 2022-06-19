@@ -47,8 +47,7 @@ class Administrador_de_usuarios : Fragment() {
                 }else{
                 try {
 
-                    if (miusuariodao.isRowIsExist(enlace.usuario.text.toString())
-                    ){
+                    if (miusuariodao.isRowIsExist(enlace.usuario.text.toString())){
                         Toast.makeText(context, "ese nombre de usuario ya esta en uso", Toast.LENGTH_SHORT).show()
                     }else{
                         miusuariodao.inserta(Usuario(null,1,0,enlace.usuario.text.toString(),enlace.contraseA.text.toString()))

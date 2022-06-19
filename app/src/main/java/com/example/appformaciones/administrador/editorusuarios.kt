@@ -53,8 +53,13 @@ class editorusuarios : Fragment() {
 
                         usu.nombre = enlace.nombre.text.toString()
                         usu.contraseña = enlace.contraseAeditor.text.toString()
-                        dao.modifica(usu)
-                    findNavController().popBackStack()
+                    if (dao.isRowIsExist(enlace.nombre.text.toString())){
+                        Toast.makeText(context, "ese nombre de usuario ya esta en uso", Toast.LENGTH_SHORT).show()
+                    }else{
+                    dao.modifica(usu)
+                        findNavController().popBackStack()
+                    }
+
 
                 }
 
