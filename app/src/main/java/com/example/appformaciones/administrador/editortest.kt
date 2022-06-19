@@ -55,17 +55,21 @@ class editortest : Fragment() {
 
 
         enlace.insertar2.setOnClickListener {
-            lifecycleScope.launch {
-                pregunta.pregunta=enlace.pregunta2.text.toString()
-                daopreguntas.modifica(pregunta)
+            if (enlace.pregunta2.text.isNullOrBlank() || enlace.respuestacorrecta2.text.isNullOrBlank() || enlace.respuesta4.text.isNullOrBlank() || enlace.respuesta5.text.isNullOrBlank()) {
+                Toast.makeText(context, "rellena toda la informacion", Toast.LENGTH_SHORT).show()
+            } else {
+                lifecycleScope.launch {
+                    pregunta.pregunta = enlace.pregunta2.text.toString()
+                    daopreguntas.modifica(pregunta)
 
-                lista[0].respuesta=enlace.respuestacorrecta2.text.toString()
-                lista[1].respuesta=enlace.respuesta5.text.toString()
-                lista[2].respuesta=enlace.respuesta4.text.toString()
-                daorespuestas.modifica(lista[0])
-                daorespuestas.modifica(lista[1])
-                daorespuestas.modifica(lista[2])
-                findNavController().popBackStack()
+                    lista[0].respuesta = enlace.respuestacorrecta2.text.toString()
+                    lista[1].respuesta = enlace.respuesta5.text.toString()
+                    lista[2].respuesta = enlace.respuesta4.text.toString()
+                    daorespuestas.modifica(lista[0])
+                    daorespuestas.modifica(lista[1])
+                    daorespuestas.modifica(lista[2])
+                    findNavController().popBackStack()
+                }
             }
         }
 

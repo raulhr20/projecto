@@ -42,6 +42,9 @@ class Administrador_de_usuarios : Fragment() {
         val miusuariodao= AppDB.getInstancia(requireContext()).usuaioDAO
         enlace.botonInsertar.setOnClickListener{
             lifecycleScope.launch {
+                if (enlace.usuario.text.isNullOrBlank()||enlace.contraseA.text.isNullOrBlank()){
+                    Toast.makeText(context, "rellena toda la informacion por favor", Toast.LENGTH_SHORT).show()
+                }else{
                 try {
 
                     if (miusuariodao.isRowIsExist(enlace.usuario.text.toString())
@@ -55,6 +58,7 @@ class Administrador_de_usuarios : Fragment() {
                     } catch (exception: SQLiteConstraintException) {
                     Toast.makeText(context, "a ocurrido un error", Toast.LENGTH_SHORT).show()
                 }
+        }
 
 
                 }

@@ -25,14 +25,18 @@
         <action
             android:id="@+id/action_menuadministrador_to_administradormodulos"
             app:destination="@id/administradormodulos"
-            app:popUpTo="@id/menuadministrador" />
+            app:popUpTo="@id/menuadministrador"
+            app:popUpToInclusive="false" />
         <action
             android:id="@+id/action_menuadministrador_to_administrador_de_usuarios"
             app:destination="@id/administrador_de_usuarios"
-            app:popUpTo="@id/menuadministrador" />
+            app:popUpTo="@id/menuadministrador"
+            app:popUpToInclusive="false" />
         <action
             android:id="@+id/action_menuadministrador_to_gestortest"
-            app:destination="@id/gestortest" />
+            app:destination="@id/gestortest"
+            app:popUpTo="@id/menuadministrador"
+            app:popUpToInclusive="false" />
     </fragment>
     <fragment
         android:id="@+id/administradormodulos"
@@ -41,7 +45,9 @@
         tools:layout="@layout/fragment_administradormodulos" >
         <action
             android:id="@+id/action_administradormodulos_to_editar_modulo"
-            app:destination="@id/editar_modulo" />
+            app:destination="@id/editar_modulo"
+            app:popUpTo="@id/administradormodulos"
+            app:popUpToInclusive="false" />
     </fragment>
     <fragment
         android:id="@+id/administrador_de_usuarios"
@@ -49,7 +55,9 @@
         android:label="Administrador_de_usuarios" >
         <action
             android:id="@+id/action_administrador_de_usuarios_to_editorusuarios"
-            app:destination="@id/editorusuarios" />
+            app:destination="@id/editorusuarios"
+            app:popUpTo="@id/administrador_de_usuarios"
+            app:popUpToInclusive="false" />
     </fragment>
     <activity
         android:id="@+id/videoplayer"
@@ -115,7 +123,9 @@
         tools:layout="@layout/fragment_administradorpreguntas" >
         <action
             android:id="@+id/action_gestortest_to_editortest"
-            app:destination="@id/editortest" />
+            app:destination="@id/editortest"
+            app:popUpTo="@id/gestortest"
+            app:popUpToInclusive="false" />
     </fragment>
     <fragment
         android:id="@+id/test"

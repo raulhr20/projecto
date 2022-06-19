@@ -47,19 +47,19 @@ class editorusuarios : Fragment() {
         enlace.contraseAeditor.setText(usu.contraseña)
         enlace.actualizar.setOnClickListener {
             lifecycleScope.launch {
+                if (enlace.nombre.text.isNullOrBlank()||enlace.contraseAeditor.text.isNullOrBlank()){
+                    Toast.makeText(context, "rellena toda la informacion por favor", Toast.LENGTH_SHORT).show()
+                }else {
 
-                if (dao.isRowIsExist(enlace.nombre.text.toString())){
-                    Toast.makeText(context, "ese usuario ya existe", Toast.LENGTH_SHORT).show()
-                }else{
-                    usu.nombre=enlace.nombre.text.toString()
-                    usu.contraseña=enlace.contraseAeditor.text.toString()
-                    dao.modifica(usu)
+                        usu.nombre = enlace.nombre.text.toString()
+                        usu.contraseña = enlace.contraseAeditor.text.toString()
+                        dao.modifica(usu)
+                    findNavController().popBackStack()
+
                 }
 
-
-
             }
-            findNavController()
+
             }
     }
 }

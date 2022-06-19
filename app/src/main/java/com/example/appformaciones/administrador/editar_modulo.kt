@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.appformaciones.R
@@ -12,6 +13,7 @@ import com.example.appformaciones.basededatos.AppDB
 import com.example.appformaciones.databinding.FragmentAdministradormodulosBinding
 import com.example.appformaciones.databinding.FragmentEditarModuloBinding
 import kotlinx.coroutines.launch
+import java.util.regex.Pattern
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -60,16 +62,25 @@ class editar_modulo : Fragment() {
             findNavController().navigate(editar_moduloDirections.actionEditarModuloToVideoplayer(enlace.urlmoduloeditor.text.toString()))
         }
         enlace.botonactualizar.setOnClickListener {
-            lifecycleScope.launch {
-                modulo.acutalizamodulo(
-                    datos.id,
-                    enlace.nombremoduloeditar.text.toString(),
-                    enlace.nivelmoduloeditar.text.toString().toInt(),
-                    enlace.urlmoduloeditor.text.toString()
-                )
+            if (enlace.nombremoduloeditar.text.isNullOrBlank()||enlace.nivelmoduloeditar.text.isNullOrBlank()){
+                Toast.makeText(context, "rellena toda la informacion por favor", Toast.LENGTH_SHORT).show()
+            }else {
+                var urlvalida = Pattern.compile("^(http(s)?:\\/\\/)?((w){3}.)?youtu(be|.be)?(\\.com)?\\/.+").matcher(enlace.urlmoduloeditor.text.toString()).matches()
+                if (urlvalida) {
+                    lifecycleScope.launch {
+                        modulo.acutalizamodulo(
+                            datos.id,
+                            enlace.nombremoduloeditar.text.toString(),
+                            enlace.nivelmoduloeditar.text.toString().toInt(),
+                            enlace.urlmoduloeditor.text.toString()
+                        )
+                    }
+                    findNavController().popBackStack()
+                }else{
+                    Toast.makeText(context, "la url no es valdia", Toast.LENGTH_SHORT).show()
+                }
             }
-            findNavController().navigate(editar_moduloDirections.actionEditarModuloToAdministradormodulos())
-        }
+            }
 
     }
 }

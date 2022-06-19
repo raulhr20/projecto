@@ -47,13 +47,26 @@ class administradormodulos : Fragment() {
         enlace.listamodulos.layoutManager=LinearLayoutManager(context)
         val mimodulo= AppDB.getInstancia(requireContext()).moduloDAO
         enlace.aAdir.setOnClickListener{
-            var urlvalida = Pattern.compile("^(http(s)?:\\/\\/)?((w){3}.)?youtu(be|.be)?(\\.com)?\\/.+").matcher(enlace.url.text.toString()).matches()
-            if (urlvalida){
-                lifecycleScope.launch {
-                    mimodulo.inserta(Modulo(null,enlace.modulo.text.toString(),enlace.nivel.text.toString().toInt(),enlace.url.text.toString()))
+            if (enlace.modulo.text.isNullOrBlank()||enlace.nivel.text.isNullOrBlank()){
+                Toast.makeText(context, "rellena toda la informacion por favor", Toast.LENGTH_SHORT).show()
+            }else {
+                var urlvalida =
+                    Pattern.compile("^(http(s)?:\\/\\/)?((w){3}.)?youtu(be|.be)?(\\.com)?\\/.+")
+                        .matcher(enlace.url.text.toString()).matches()
+                if (urlvalida) {
+                    lifecycleScope.launch {
+                        mimodulo.inserta(
+                            Modulo(
+                                null,
+                                enlace.modulo.text.toString(),
+                                enlace.nivel.text.toString().toInt(),
+                                enlace.url.text.toString()
+                            )
+                        )
+                    }
+                } else {
+                    Toast.makeText(context, "url invalida", Toast.LENGTH_SHORT).show()
                 }
-            }else{
-                Toast.makeText(context, "url invalida", Toast.LENGTH_SHORT).show()
             }
 
         }
