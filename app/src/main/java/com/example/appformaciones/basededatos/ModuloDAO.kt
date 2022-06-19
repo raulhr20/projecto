@@ -10,7 +10,7 @@ interface ModuloDAO {
 
     @Delete
     suspend fun borra(modulo: Modulo)
-    @Query("DELETE FROM Modulo Where id=:id")
+    @Query("DELETE FROM Modulo  Where id=:id")
     suspend fun borraPorId(id:Int)
 
     @Update

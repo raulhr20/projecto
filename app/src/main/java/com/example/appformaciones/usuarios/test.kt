@@ -90,11 +90,14 @@ class test : Fragment() {
                         if (modulo.nivel===usuario.nivel) {
                             vmu.actualizanivel(usuario)
                             findNavController().popBackStack()
+                            Toast.makeText(context, "AS APROBADO", Toast.LENGTH_SHORT).show()
                         }else{
                             findNavController().popBackStack()
+                            Toast.makeText(context, "AS APROBADO DE NUEVO", Toast.LENGTH_SHORT).show()
                         }
                     }else{
                         findNavController().popBackStack()
+                        Toast.makeText(context, "AS SUSPENDIDO", Toast.LENGTH_SHORT).show()
                     }
                 }
 

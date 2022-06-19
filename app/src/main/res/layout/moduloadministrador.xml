@@ -15,6 +15,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="20"
+        android:gravity="center"
         android:textSize="24sp" />
 
     <TextView
@@ -22,11 +23,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="5"
+        android:gravity="center"
         android:textSize="24sp" />
 
     <TextView
         android:id="@+id/urlmodulo"
-        android:layout_width="10dp"
+        android:layout_width="31dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:text="TextView"

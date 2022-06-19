@@ -8,7 +8,7 @@
         <entry key="..\:/Users/raulh/appformaciones/app/src/main/res/layout-land/fragment_administradorpreguntas.xml" value="0.18" />
         <entry key="..\:/Users/raulh/appformaciones/app/src/main/res/layout-land/fragment_editar_modulo.xml" value="0.20520833333333333" />
         <entry key="..\:/Users/raulh/appformaciones/app/src/main/res/layout-land/fragment_test.xml" value="0.20520833333333333" />
-        <entry key="..\:/Users/raulh/appformaciones/app/src/main/res/layout/activity_main.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/raulh/appformaciones/app/src/main/res/layout/activity_main.xml" value="0.18" />
         <entry key="..\:/Users/raulh/appformaciones/app/src/main/res/layout/activity_mainlista.xml" value="0.1" />
         <entry key="..\:/Users/raulh/appformaciones/app/src/main/res/layout/fragment_administrador_de_usuarios.xml" value="0.25" />
         <entry key="..\:/Users/raulh/appformaciones/app/src/main/res/layout/fragment_administrador_modulos.xml" value="0.33" />
@@ -36,6 +36,7 @@
         <entry key="..\:/Users/raulh/appformaciones/app/src/main/res/layout/usuario.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/raulh/appformaciones/app/src/main/res/layout/video_row.xml" value="0.1" />
         <entry key="..\:/Users/raulh/appformaciones/app/src/main/res/layout/videoplayer.xml" value="0.16979166666666667" />
+        <entry key="..\:/Users/raulh/appformaciones/app/src/main/res/menu/mimenu.xml" value="0.20416666666666666" />
       </map>
     </option>
   </component>

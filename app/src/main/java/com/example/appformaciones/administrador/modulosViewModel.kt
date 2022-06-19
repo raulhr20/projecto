@@ -12,8 +12,10 @@ import kotlinx.coroutines.launch
 
 
 class modulosViewModel(aplicacion:Application):AndroidViewModel(aplicacion) {
-val dao= AppDB.getInstancia(aplicacion).moduloDAO
-    val daopreguntas=AppDB.getInstancia(aplicacion).preguntaDAO
+
+    val dao= AppDB.getInstancia(aplicacion).moduloDAO
+
+
 
     private var _lista=dao.listaviewmodel()
     val lista: LiveData<List<Modulo>>
@@ -21,25 +23,30 @@ val dao= AppDB.getInstancia(aplicacion).moduloDAO
 
 
     fun eliminamodulo(pos:Int){
+
+
         viewModelScope.launch {
             lista.value?.let {
                 dao.borra(it[pos])
+
+
             }
         }
     }
-    fun haytest(modid:Int){
+    fun getModulo(pos:Int): Modulo {
+        var modulo:Modulo
+        modulo=Modulo(null,null,null,null)
         viewModelScope.launch {
             lista.value?.let {
-             var x = daopreguntas.listafiltro(modid)
-                Log.d("TAG",x.toString())
+                modulo=it[pos]
             }
         }
-
+        return modulo
     }
+
     fun cargalistapornivel(nivel:Int){
         _lista=dao.listapornivel(nivel)
     }
-
 
 
 }

@@ -24,6 +24,9 @@ class administradormodulos : Fragment() {
     val vm: modulosViewModel by lazy{
         ViewModelProvider(this).get(modulosViewModel::class.java)
     }
+    val vmp: PreguntasViewModel by lazy{
+        ViewModelProvider(this).get(PreguntasViewModel::class.java)
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -68,7 +71,11 @@ class administradormodulos : Fragment() {
 
 
                 override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                   var modulo=vm.getModulo(viewHolder.absoluteAdapterPosition)
+                    modulo.id?.let { vmp.eliminapreguntas(it) }
                     vm.eliminamodulo(viewHolder.absoluteAdapterPosition)
+
+
                 }
 
             })

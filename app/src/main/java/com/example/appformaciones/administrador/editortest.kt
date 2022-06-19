@@ -71,7 +71,11 @@ class editortest : Fragment() {
 
 
         enlace.pregunta2.setText(pregunta.pregunta)
+        vm.listaRes.observe(viewLifecycleOwner){
+            Toast.makeText(context, it.toString(), Toast.LENGTH_SHORT).show()
+        }
         pregunta.id?.let { it1 -> vm.obtenerrespuestas(it1) }
+
            vm.listaRes.observe(viewLifecycleOwner){
                lista=it
                enlace.respuestacorrecta2.setText(it[0].respuesta)

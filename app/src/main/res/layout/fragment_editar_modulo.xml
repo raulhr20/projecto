@@ -45,7 +45,7 @@
         android:id="@+id/botonprovar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="provar url"
+        android:text="probar url"
         app:layout_constraintEnd_toEndOf="@+id/urlmoduloeditor"
         app:layout_constraintStart_toStartOf="@+id/urlmoduloeditor"
         app:layout_constraintTop_toBottomOf="@+id/urlmoduloeditor" />

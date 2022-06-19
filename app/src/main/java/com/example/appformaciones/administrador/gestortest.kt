@@ -19,6 +19,7 @@ import com.example.appformaciones.R
 import com.example.appformaciones.basededatos.*
 import com.example.appformaciones.databinding.FragmentAdministradorpreguntasBinding
 import kotlinx.coroutines.launch
+import java.lang.NullPointerException
 import java.util.*
 
 
@@ -60,15 +61,23 @@ class gestortest : Fragment() {
         val daopreguntas=AppDB.getInstancia(requireContext()).preguntaDAO
         val daorespuestas=AppDB.getInstancia(requireContext()).respuestaDAO
         enlace.insertar.setOnClickListener {
-            lifecycleScope.launch {
-                var idpregunta=daopreguntas.inserta(Pregunta(null,enlace.pregunta.text.toString(),(enlace.modulos.selectedItem as Modulo).id))
-                Toast.makeText(context, idpregunta.toString(), Toast.LENGTH_SHORT).show()
-                daorespuestas.inserta(Respuesta(null,enlace.respuestacorrecta.text.toString(),true,idpregunta))
-                daorespuestas.inserta(Respuesta(null,enlace.respuesta2.text.toString(),false,idpregunta))
-                daorespuestas.inserta(Respuesta(null,enlace.respuesta3.text.toString(),false,idpregunta))
 
+           if (enlace.pregunta.text.isNullOrBlank()||enlace.respuestacorrecta.text.isNullOrBlank()||enlace.respuesta2.text.isNullOrBlank()||enlace.respuesta3.text.isNullOrBlank()||enlace.modulos.isSelected){
+               Toast.makeText(context, "rellena toda la informacion", Toast.LENGTH_SHORT).show()
+           }else{
+               lifecycleScope.launch {
+                   try {
+                       var idpregunta=daopreguntas.inserta(Pregunta(null,enlace.pregunta.text.toString(),(enlace.modulos.selectedItem as Modulo).id))
+                       Toast.makeText(context, idpregunta.toString(), Toast.LENGTH_SHORT).show()
+                   daorespuestas.inserta(Respuesta(null,enlace.respuestacorrecta.text.toString(),true,idpregunta))
+                   daorespuestas.inserta(Respuesta(null,enlace.respuesta2.text.toString(),false,idpregunta))
+                   daorespuestas.inserta(Respuesta(null,enlace.respuesta3.text.toString(),false,idpregunta))
+                    }catch (e:NullPointerException){
+                       Toast.makeText(context, "hay un error", Toast.LENGTH_SHORT).show()
+                    }
 
-            }
+               }
+           }
         }
 
         enlace.filtro.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {

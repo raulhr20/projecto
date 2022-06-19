@@ -2,10 +2,8 @@ package com.example.appformaciones.administrador
 
 import android.database.sqlite.SQLiteConstraintException
 import android.os.Bundle
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
@@ -13,6 +11,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.appformaciones.R
 import com.example.appformaciones.basededatos.AppDB
 import com.example.appformaciones.basededatos.Usuario
 import com.example.appformaciones.basededatos.adaptadorusuario
@@ -24,10 +23,6 @@ class Administrador_de_usuarios : Fragment() {
     lateinit var enlace:FragmentAdministradorDeUsuariosBinding
     val vm: usuariosViewModel by lazy{
         ViewModelProvider(this).get(usuariosViewModel::class.java)
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
     }
 
     override fun onCreateView(
